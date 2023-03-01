@@ -1,5 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+
 @use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
@@ -20,6 +21,7 @@ $anis-sabbagh-warn: mat.define-palette(mat.$red-palette);
 @import "assets/styles/utilities.scss";
 @import "assets/styles/breakpoint.scss";
 @import "assets/styles/layout.scss";
+@import "assets/styles/palette.scss";
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $anis-sabbagh-theme: mat.define-light-theme(
@@ -40,4 +42,18 @@ $anis-sabbagh-theme: mat.define-light-theme(
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0%;
+  height: 100%;
+  color: #daddd8ff;
+  background-color: $eerie-black;
+}
+
+a {
+  color: #daddd8ff;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+html {
+  height: 100%;
 }

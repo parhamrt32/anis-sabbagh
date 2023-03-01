@@ -1,2 +1,3 @@
-<app-nav-bar></app-nav-bar>
-<app-home></app-home>
+<app-nav-bar *ngIf="isItHome" ></app-nav-bar>  
+<router-outlet></router-outlet>
+<app-footer *ngIf="isItHome"></app-footer>

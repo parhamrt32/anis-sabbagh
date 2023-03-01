@@ -8,6 +8,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     PortfolioComponent,
     NavBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
