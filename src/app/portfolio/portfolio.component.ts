@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { delay, Observable, of } from 'rxjs';
 import { UnsplashService } from 'src/Services/unsplash.service';
 
 @Component({
@@ -8,12 +9,14 @@ import { UnsplashService } from 'src/Services/unsplash.service';
 })
 export class PortfolioComponent implements OnInit {
   images: any[] = [];
+  images$: Observable<any[]> = of(this.images);
 
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
     this.unsplash.getImages().subscribe((x: any) => {
       this.images = x;
       console.log(this.images);
+      this.images$ = of(this.images).pipe(delay(2000));
     });
   }
 }
