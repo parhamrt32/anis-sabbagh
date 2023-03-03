@@ -1,1 +1,7 @@
-<p>portfolio works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="display-f flex-dir-column">
+    <img *ngFor=" let image of images " [src]="image.urls.regular">
+</div>
+
+
+<app-footer></app-footer>
