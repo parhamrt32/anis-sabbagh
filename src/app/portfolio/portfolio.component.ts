@@ -10,6 +10,7 @@ import { UnsplashService } from 'src/Services/unsplash.service';
 export class PortfolioComponent implements OnInit {
   images: any[] = [];
   images$: Observable<any[]> = of(this.images);
+  showFooter: boolean = false;
 
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class PortfolioComponent implements OnInit {
       this.images = x;
       console.log(this.images);
       this.images$ = of(this.images).pipe(delay(2000));
+      this.showFooter = true;
     });
   }
 }

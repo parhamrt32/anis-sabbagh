@@ -1,7 +1,10 @@
 <app-nav-bar></app-nav-bar>
-<div *ngIf="images$ | async as photos; else loading" class="display-f flex-dir-column">
+<div *ngIf="images$ | async as photos; else loading" class="display-f flex-dir-column images-container">
     <img class="fade-in-top" *ngFor=" let image of photos  " [src]="image.urls.regular">
+    <app-footer *ngIf="showFooter"></app-footer>
 </div>
+
+
 
 
 <ng-template #loading>
@@ -11,8 +14,3 @@
     </div>
 
 </ng-template>
-
-
-
-
-<app-footer></app-footer>
