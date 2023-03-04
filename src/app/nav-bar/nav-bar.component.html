@@ -7,5 +7,21 @@
     <a routerLink="/Home">
         <h1 class=" m-0" style="font-family: 'Cormorant Garamond', serif"> ANIS SABBAGH </h1>
     </a>
-    <mat-icon style="font-size:2rem ;"> menu </mat-icon>
+    <mat-icon class="navBarToggle" (click)="onClickIcon()" style="font-size:2rem ;">
+        {{iconNames[currentIconIndex] }}
+    </mat-icon>
+
+    <div #navbarSmallScreenShowElement [ngClass]=" navbarSmallScreenShow ? 'fade-in-top' : '' "
+        class="navbarSmallScreen ">
+        <ul class=" navbarSmallScreenUL m-0  font-lg display-f "
+            style="margin-block-start: 0;padding-inline-start:0;font-family: 'Cormorant Garamond', serif ; font-weight: 400;">
+            <li> <a routerLink="/Home" href="#"> Home </a> </li>
+            <li> <a routerLink="/Portfolio" href="#"> Portfolio </a> </li>
+            <li> <a href="#"> Stories </a> </li>
+            <li> <a href="#"> Blog </a> </li>
+            <li> <a href="#"> Store </a></li>
+        </ul>
+    </div>
+
+
 </div>
