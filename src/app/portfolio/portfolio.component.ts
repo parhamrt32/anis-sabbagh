@@ -14,9 +14,9 @@ export class PortfolioComponent implements OnInit {
 
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
-    this.unsplash.getImages().subscribe((x: any) => {
+    this.unsplash.getUserPhotos().subscribe((x: any) => {
       this.images = x;
-      console.log(this.images);
+
       this.images$ = of(this.images).pipe(delay(2000));
       this.showFooter = true;
     });
