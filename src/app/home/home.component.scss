@@ -1,4 +1,5 @@
 :host {
+  margin: 0 auto;
   width: 100%;
   height: inherit;
   overflow: hidden;
@@ -64,5 +65,15 @@
     -webkit-filter: blur(0px);
     filter: blur(0px);
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  :host {
+    display: flex;
+  }
+
+  .homepage-overlay {
+    position: relative;
   }
 }

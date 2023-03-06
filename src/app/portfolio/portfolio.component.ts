@@ -17,8 +17,10 @@ export class PortfolioComponent implements OnInit {
     this.unsplash.getUserPhotos().subscribe((x: any) => {
       this.images = x;
 
-      this.images$ = of(this.images).pipe(delay(2000));
+      this.images$ = of(this.images).pipe(delay(200));
       this.showFooter = true;
     });
+
+    this.images$.subscribe({ complete: () => (this.showFooter = true) });
   }
 }

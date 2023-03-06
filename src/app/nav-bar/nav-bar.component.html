@@ -11,9 +11,20 @@
         {{iconNames[currentIconIndex] }}
     </mat-icon>
 
+    <div class="navbarlarge " >
+        <ul class=" navbarURL m-0  font-lg display-f "
+        style="margin-block-start: 0;padding-inline-start:0;font-family: 'Cormorant Garamond', serif ; font-weight: 400;">
+        <li> <a routerLink="/Home" href="#"> Home </a> </li>
+        <li> <a routerLink="/Portfolio" href="#"> Portfolio </a> </li>
+        <li> <a href="#"> Stories </a> </li>
+        <li> <a href="#"> Blog </a> </li>
+        <li> <a href="#"> Store </a></li>
+    </ul>
+    </div>
+
     <div #navbarSmallScreenShowElement [ngClass]=" navbarSmallScreenShow ? 'fade-in-top' : '' "
         class="navbarSmallScreen ">
-        <ul class=" navbarSmallScreenUL m-0  font-lg display-f "
+        <ul class=" navbarURL m-0  font-lg display-f "
             style="margin-block-start: 0;padding-inline-start:0;font-family: 'Cormorant Garamond', serif ; font-weight: 400;">
             <li> <a routerLink="/Home" href="#"> Home </a> </li>
             <li> <a routerLink="/Portfolio" href="#"> Portfolio </a> </li>

@@ -11,12 +11,17 @@
   display: none;
 }
 
-.navbarSmallScreenUL {
+.navbarURL {
   flex-direction: column;
+  display: flex;
   gap: 2rem;
   li {
     text-align: center;
   }
+}
+
+.navbarlarge {
+  display: none;
 }
 
 .fade-in-top {
@@ -72,5 +77,23 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .navBarToggle {
+    display: none;
+  }
+
+  .navbarURL {
+    flex-direction: row;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  .navbarlarge {
+    display: flex;
   }
 }
