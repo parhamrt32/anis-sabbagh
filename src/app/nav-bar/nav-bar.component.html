@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
 
 
-<div class=" fade-in-top navbar m-0 display-f align-items-baseline justify-space-between p-1">
+<div class="  navbar m-0 display-f align-items-baseline justify-space-between p-1">
     <a routerLink="/Home">
         <h1 class=" m-0" style="font-family: 'Cormorant Garamond', serif"> ANIS SABBAGH </h1>
     </a>
@@ -11,15 +11,15 @@
         {{iconNames[currentIconIndex] }}
     </mat-icon>
 
-    <div class="navbarlarge " >
+    <div class="navbarlarge ">
         <ul class=" navbarURL m-0  font-lg display-f "
-        style="margin-block-start: 0;padding-inline-start:0;font-family: 'Cormorant Garamond', serif ; font-weight: 400;">
-        <li> <a routerLink="/Home" href="#"> Home </a> </li>
-        <li> <a routerLink="/Portfolio" href="#"> Portfolio </a> </li>
-        <li> <a href="#"> Stories </a> </li>
-        <li> <a href="#"> Blog </a> </li>
-        <li> <a href="#"> Store </a></li>
-    </ul>
+            style="margin-block-start: 0;padding-inline-start:0;font-family: 'Cormorant Garamond', serif ; font-weight: 400;">
+            <li> <a routerLink="/Home" href="#"> Home </a> </li>
+            <li> <a routerLink="/Portfolio" href="#"> Portfolio </a> </li>
+            <li> <a href="#"> Stories </a> </li>
+            <li> <a href="#"> Blog </a> </li>
+            <li> <a href="#"> Store </a></li>
+        </ul>
     </div>
 
     <div #navbarSmallScreenShowElement [ngClass]=" navbarSmallScreenShow ? 'fade-in-top' : '' "
