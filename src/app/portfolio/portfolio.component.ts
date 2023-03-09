@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
+import { fade } from 'src/animation/fade';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { UnsplashService } from 'src/Services/unsplash.service';
 
@@ -7,7 +9,7 @@ import { UnsplashService } from 'src/Services/unsplash.service';
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
-
+  animations: [fade],
 })
 export class PortfolioComponent implements OnInit {
   images: any[] = [];

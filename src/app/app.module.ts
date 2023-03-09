@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
+import { AboutMeComponent } from './about-me/about-me.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,15 @@ import { HttpClientModule } from '@angular/common/http';
     PortfolioComponent,
     NavBarComponent,
     FooterComponent,
+    AboutMeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatDividerModule,
     HttpClientModule,
-    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

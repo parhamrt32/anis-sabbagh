@@ -1,7 +1,8 @@
 <app-nav-bar></app-nav-bar>
+
 <div class="images-container">
     <div *ngIf="images$ | async as photos; else loading" class="pics display-f flex-dir-column ">
-        <img class="fade-in-top mb-1" *ngFor=" let image of photos; index as i  " [src]="image.urls.regular">
+        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i  " [src]="image.urls.regular">
 
     </div>
 </div>
