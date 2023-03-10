@@ -12,6 +12,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDividerModule } from '@angular/material/divider';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { ContactComponent } from './contact/contact.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
     NavBarComponent,
     FooterComponent,
     AboutMeComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
     MatIconModule,
     MatDividerModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

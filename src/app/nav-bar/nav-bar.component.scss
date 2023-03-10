@@ -3,20 +3,30 @@
   position: absolute;
   right: 0;
   top: 0%;
-  background-color: $eerie-black;
+  background-color: $raisin-black;
   height: fit-content;
+
   margin-top: 3.5rem;
   padding: 2rem;
   transition: 500ms;
   display: none;
 }
 
+.navbar {
+  background-color: $raisin-black;
+  text-transform: uppercase;
+}
+
 .navbarURL {
   flex-direction: column;
   display: flex;
+
   gap: 2rem;
   li {
     text-align: center;
+    a {
+      font-weight: 800;
+    }
   }
 }
 
@@ -80,7 +90,7 @@
   }
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 1000px) {
   .navBarToggle {
     display: none;
   }
@@ -88,8 +98,12 @@
   .navbarURL {
     flex-direction: row;
   }
+  a {
+    transition: 500ms;
+  }
 
   a:hover {
+    transition: 200ms;
     color: white;
   }
 
