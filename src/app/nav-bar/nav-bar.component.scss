@@ -40,6 +40,18 @@
   display: flex;
 }
 
+.contact {
+  background-color: $platinum;
+  color: $raisin-black;
+  transition: 500ms;
+}
+
+.contact:hover {
+  background-color: $raisin-black;
+  color: $platinum;
+  transition: 500ms;
+}
+
 @-webkit-keyframes fade-in-top {
   0% {
     -webkit-transform: translateY(-50px);

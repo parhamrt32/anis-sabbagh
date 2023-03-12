@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
 import { fade } from 'src/animation/fade';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { UnsplashService } from 'src/Services/unsplash.service';
 
@@ -19,6 +19,10 @@ export class PortfolioComponent implements OnInit {
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
     this.images$ = this.unsplash.getUserPhotos();
+    this.unsplash.getUserPhotos().subscribe((x) => {
+      x.forEach((item) => this.images.push(...item));
+      this.images$ = of(this.images);
+    });
 
     // this.unsplash.getUserPhotos().subscribe((x: any) => {
     //   this.images = x;

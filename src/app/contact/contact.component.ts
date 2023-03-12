@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,9 +11,15 @@ export class ContactComponent {
   email: string | undefined;
   message: string | undefined;
 
+  constructor(private http: HttpClient) {}
+
   onSubmit() {
-    console.log('Name: ' + this.name);
-    console.log('Email: ' + this.email);
-    console.log('Message: ' + this.message);
+    const body = {
+      name: this.name,
+      email: this.email,
+      message: this.message,
+    };
+
+   
   }
 }

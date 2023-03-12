@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, switchMap } from 'rxjs';
+import { concatMap, map, Observable, range, switchMap, toArray } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +30,15 @@ export class UnsplashService {
         const params = {
           client_id: this.accessKey,
           per_page: this.maxPerPage.toString(),
-          page: pages.toString(),
         };
-        return this.http.get<any[]>(url, { params });
+
+        return range(1, pages).pipe(
+          concatMap((page) => {
+            const pageParams = { ...params, page: page.toString() };
+            return this.http.get<any[]>(url, { params: pageParams });
+          }),
+          toArray()
+        );
       })
     );
   }
