@@ -15,6 +15,7 @@ export class PortfolioComponent implements OnInit {
   images: any[] = [];
   images$: Observable<any[]> | undefined;
   showFooter: boolean = false;
+  showTemplate = true;
 
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
