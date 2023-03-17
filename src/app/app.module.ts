@@ -13,8 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDividerModule } from '@angular/material/divider';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ContactComponent } from './contact/contact.component';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgOptimizedImage } from '@angular/common';
+import { LazyImgDirective } from './Directives/lazy-img-directive.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     AboutMeComponent,
     ContactComponent,
+    LazyImgDirective,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,8 @@ import { FormsModule } from '@angular/forms';
     MatDividerModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent],

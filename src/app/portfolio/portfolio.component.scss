@@ -7,6 +7,17 @@
   overflow-x: hidden;
 }
 
+.Category {
+  font-family: "Cormorant Garamond";
+  font-weight: 600;
+  color: $platinum;
+  font-size: 1.3rem;
+}
+
+input {
+  display: none;
+}
+
 .images-container {
 }
 
@@ -49,6 +60,7 @@
 
   img {
     transition: all 200ms ease-in-out;
+    width: 100%;
   }
 
   img:hover {
