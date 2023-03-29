@@ -27,6 +27,7 @@ export class PortfolioComponent implements OnInit {
   myForm: FormGroup = new FormGroup({
     option: new FormControl('all'),
   });
+  shownLoading: boolean = true;
 
   constructor(private unsplash: UnsplashService) {}
   ngOnInit(): void {
@@ -46,5 +47,9 @@ export class PortfolioComponent implements OnInit {
     });
 
     this.myForm.valueChanges.subscribe((x) => console.log(x));
+  }
+
+  loadFunc(last: boolean) {
+    last && (this.shownLoading = false);
   }
 }

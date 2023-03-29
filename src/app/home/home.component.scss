@@ -78,9 +78,15 @@
 @media screen and (min-width: 760px) {
   :host {
     display: flex;
+    max-width: 1400px;
   }
 
   .homepage-overlay {
     position: relative;
+  }
+  .homePage {
+    img {
+      object-position: top;
+    }
   }
 }

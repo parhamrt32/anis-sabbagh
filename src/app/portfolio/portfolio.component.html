@@ -1,6 +1,4 @@
-<app-nav-bar style=" position: sticky;
-position: -webkit-sticky;
-top: 0;"></app-nav-bar>
+<app-nav-bar></app-nav-bar>
 
 
 <div class="Category ">
@@ -21,18 +19,29 @@ top: 0;"></app-nav-bar>
 </div>
 
 
+
+<div *ngIf="shownLoading" style=" inset: 0; height: 50vh; "
+    class="position-absolute display-f justify-center align-items-center loading-container mt-auto mb-auto  ">
+    <span class='loading'> Loading </span>
+</div>
+
+
+
+
 <div *ngIf="myForm.get('option')?.value === 'all'" class="images-container mt-2 mb-2">
-    <div *ngIf="images$ | async as photos; else loading" class="pics display-f flex-dir-column ">
-        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i  " [ngSrc]="image.urls.regular"
-            style="position: relative;" loading="eager" fill [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
+    <div *ngIf="images$ | async as photos" class="pics display-f flex-dir-column ">
+        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i ; last as l  " [ngSrc]="image.urls.regular"
+            (load)="loadFunc( l)" style="position: relative;" loading="eager" fill
+            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
     </div>
 </div>
 
 <div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container mt-2 mb-2">
-    <div *ngIf="ArchitectureImages$ | async as photos; else loading" class="pics display-f flex-dir-column ">
-        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i  " [ngSrc]="image.urls.regular"
-            style="position: relative;" loading="eager" fill [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
+    <div *ngIf="ArchitectureImages$ | async as photos;" class="pics display-f flex-dir-column ">
+        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i ; last as l " [ngSrc]="image.urls.regular"
+            (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
+            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
     </div>
 
@@ -40,9 +49,10 @@ top: 0;"></app-nav-bar>
 
 
 <div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container mt-2 mb-2">
-    <div *ngIf="PortraitImages$ | async as photos; else loading" class="pics display-f flex-dir-column ">
-        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i  " [ngSrc]="image.urls.regular"
-            style="position: relative;" loading="eager" fill [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
+    <div *ngIf="PortraitImages$ | async as photos;" class="pics display-f flex-dir-column ">
+        <img @fade class=" mb-1" *ngFor=" let image of photos; index as i;last as l  " [ngSrc]="image.urls.regular"
+            (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
+            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
     </div>
 
@@ -52,22 +62,3 @@ top: 0;"></app-nav-bar>
 
 
 <app-footer class=" footer mt-auto"></app-footer>
-
-
-
-
-
-
-
-
-
-<ng-template #loading>
-
-    <div style="
-        position: absolute;
-        inset: 0;
-        " class="display-f justify-center align-items-center loading-container mt-auto mb-auto ">
-        <span class='loading'> Loading </span>
-    </div>
-
-</ng-template>

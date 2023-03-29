@@ -5,12 +5,14 @@
   transition: all 0.2s ease-out;
   flex-direction: column;
   overflow-x: hidden;
+  color: $raisin-black;
+  background-color: $platinum;
 }
 
 .Category {
   font-family: "Cormorant Garamond";
   font-weight: 600;
-  color: $platinum;
+
   font-size: 1.3rem;
 }
 
@@ -21,13 +23,9 @@ input {
 .images-container {
 }
 
-.loading-container {
-  height: 90vh;
-}
-
 .loading {
   font-size: 3rem;
-  background-image: linear-gradient(to right, #ffffff 35%, #71797e 100%);
+  background-image: linear-gradient(to right, $raisin-black 35%, #71797e 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
