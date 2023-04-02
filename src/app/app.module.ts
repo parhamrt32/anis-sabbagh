@@ -10,6 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { ContactComponent } from './contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgOptimizedImage } from '@angular/common';
+import { LazyImgDirective } from './Directives/lazy-img-directive.directive';
 
 @NgModule({
   declarations: [
@@ -18,14 +24,20 @@ import { HttpClientModule } from '@angular/common/http';
     PortfolioComponent,
     NavBarComponent,
     FooterComponent,
+    AboutMeComponent,
+    ContactComponent,
+    LazyImgDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatDividerModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent],

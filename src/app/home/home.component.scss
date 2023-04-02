@@ -1,3 +1,4 @@
+@import "../../assets/styles/palette.scss";
 :host {
   margin: 0 auto;
   width: 100%;
@@ -19,6 +20,11 @@
     animation: puff-in-center;
     animation-duration: 0.6s;
   }
+}
+
+.contact {
+  background-color: $raisin-black;
+  padding: 6px 10px;
 }
 
 .homepage-overlay {
@@ -72,9 +78,15 @@
 @media screen and (min-width: 760px) {
   :host {
     display: flex;
+    max-width: 1400px;
   }
 
   .homepage-overlay {
     position: relative;
+  }
+  .homePage {
+    img {
+      object-position: top;
+    }
   }
 }

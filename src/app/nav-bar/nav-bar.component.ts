@@ -1,16 +1,12 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+import { fade } from 'src/animation/fade';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
+  animations: [fade],
 })
 export class NavBarComponent implements AfterViewInit {
   @ViewChild('navbarSmallScreenShowElement', { static: true }) myDiv:

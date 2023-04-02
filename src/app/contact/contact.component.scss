@@ -1,0 +1,54 @@
+@import "../../assets/styles/palette.scss";
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+input {
+  width: 50%;
+  background-color: $platinum;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border: none;
+}
+
+textarea {
+  background-color: $platinum;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border: none;
+}
+
+button {
+  background-color: $platinum;
+  color: $eerie-black;
+}
+
+.form-img {
+}
+
+img {
+  height: 100%;
+  object-position: top;
+  width: 100%;
+  object-fit: cover;
+}
+
+.form-overlay {
+  background-color: hsla(0, 0%, 25%, 0.791);
+  position: inherit;
+}
+
+.form-container {
+  flex-grow: 1;
+  height: 0%;
+}
