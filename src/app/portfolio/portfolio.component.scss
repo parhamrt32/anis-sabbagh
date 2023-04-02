@@ -19,6 +19,9 @@
 input {
   display: none;
 }
+label{
+  cursor: pointer;;
+}
 
 .images-container {
 }
@@ -52,17 +55,18 @@ input {
   }
 
   .images-container .pics {
-    transition: all 350 ease;
+    transition: all 50 ease;
     cursor: pointer;
   }
 
   img {
-    transition: all 200ms ease-in-out;
+    transition: all 50ms ease-in-out;
     width: 100%;
   }
 
   img:hover {
     transition: 200ms;
     scale: 1.1;
+    z-index: 3;
   }
 }
