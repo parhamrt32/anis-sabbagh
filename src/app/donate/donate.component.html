@@ -1,0 +1,37 @@
+<mat-dialog-actions>  <mat-icon mat-dialog-close style="cursor: pointer;"> close </mat-icon>  </mat-dialog-actions>
+<div class="pl-2 pr-2" >
+
+  <div class="languageSelection mb-1 " style="font-family: 'Poppins' , serif; font-weight: 300;" >
+    <form class="display-f justify-space-evenly  br-xs " [formGroup]="myForm">
+
+        <label [ngClass]="{'selectedLanguage' : selectedOption === 'English' }" >
+            <input type="radio" formControlName="option" value="English" [(ngModel)]="selectedOption" >
+            English
+        </label>
+        <mat-divider [vertical]="true" > </mat-divider>
+        <label [ngClass]="{'selectedLanguage' : selectedOption === 'Farsi' }">
+            <input type="radio" formControlName="option" value="Farsi" [(ngModel)]="selectedOption" >
+            Farsi
+        </label>
+    </form>
+</div>
+
+<div class="p-2" *ngIf="selectedOption === 'English'" style="font-family: 'Poppins' , serif; font-weight: 300; overflow: auto; max-height: 50vh; " >
+  <div>
+    As an active photographer in Iran, I have been striving to continue and progress with my work. However, the high costs of equipment have posed a significant financial challenge for me and my fellow photographers. In order to overcome this hurdle, I have decided to reach out to the wider world for support.
+
+  Therefore, I humbly request your assistance in the form of a small donation, whatever amount you are comfortable with, to help me advance my work and create even better content. Your contribution will enable me to obtain the necessary equipment and continue pursuing my passion for photography.
+
+  I appreciate your time and consideration, and hope that you will support me in my endeavors. Thank you for your generosity and support.
+
+  </div>
+  <a style="font-weight: 600;" class="donateBTN display-b" href="https://www.paypal.com/donate/?business=BSEDWXJNDTS4C&no_recurring=0&currency_code=CAD" target="_blank"   > PayPal </a>
+
+</div>
+
+<div class="p-2" *ngIf="selectedOption === 'Farsi'" >
+  اکثر عکاسانی که در ایران فعالیت میکنند، برای اینکه بتونن به فعالیتشون ادامه بدن و پیشرفت کنن، نیاز به حمایت مالی دارن، به دلیل هزینه بالای تجهیزات.
+  منم تصمیم گرفتم از وبسایتم استفاده کنم تا اگه عکسها براتون چشم نواز بودن و به دلتون نشستن، هرچقدر خواستید حمایت کنید تا بتونم توی کارم پیشرفت کنم و آثار بهتریو خلق کنم
+</div>
+
+</div>

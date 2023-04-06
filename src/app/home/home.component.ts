@@ -1,5 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DonateComponent } from '../donate/donate.component';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute,public dialog: MatDialog) {}
+
+  openDialog():void{
+    const dialogRef = this.dialog.open(DonateComponent )
+  }
 }
