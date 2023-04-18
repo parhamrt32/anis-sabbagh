@@ -10,17 +10,18 @@
 
 
 <div class="form_overlay" style="font-family: 'Poppins', serif ;" >
-  <h5> If you want to get in touch you can email me at <a href="mailto:anissabbagh1381@gmail.com">
-    anissabbagh1381@gmail.com </a> or fill out the contact form below </h5>
-  <form class="contact-form" (submit)="sendEmail($event)">
+  <p class="detail"> If you want to get in touch you can email me at <a href="mailto:anissabbagh1381@gmail.com">
+    anissabbagh1381@gmail.com </a> or fill out the contact form below </p>
+  <form class="contact-form position-relative" (submit)="sendEmail($event)">
     <label>Name</label>
     <input style="padding: 2px;border-radius: 4px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" [(ngModel)]="emailParam.name" type="text" name="name">
     <label>Email</label>
     <input style="padding: 2px;border-radius: 4px;"  [(ngModel)]="emailParam.email" type="email" name="email">
     <label>Message</label>
     <textarea style="padding: 2px;border-radius: 4px;" rows="4" cols="50" [(ngModel)]="emailParam.message" name="message"></textarea>
-    <input class="mt-2" style="width: 40%;" type="submit" value="Send">
+    <input  class="mt-2" style="width: 40%;" type="submit" value="Send">
   </form>
+  <p  [ngClass]="resultSuccessful ? 'result_success' : 'result_error'" *ngIf="shownResult"  class="resultText display-f align-items-center justify-space-evenly position-absolute  br-xs" > <mat-icon class="overflow-visible"> {{resultSuccessful ? 'done' : 'close'}} </mat-icon> {{ResultText}} </p>
 </div>
 
 </div>
@@ -29,4 +30,4 @@
 
 
 
-<app-footer class="mt-auto"> </app-footer>
+<app-footer class=" footer mt-auto"></app-footer>

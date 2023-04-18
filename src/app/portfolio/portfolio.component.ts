@@ -14,11 +14,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   animations: [fade],
 })
 export class PortfolioComponent implements OnInit {
-  ArchitectureImages: any[] = [];
   ArchitectureImages$: Observable<any[]> | undefined;
-
-  PortraitImages: any[] = [];
   PortraitImages$: Observable<any[]> | undefined;
+  UrbanImages$: Observable<any[]> | undefined;
+  ProductImages$: Observable<any[]> | undefined;
+
+
 
   images: any[] = [];
   images$: Observable<any[]> | undefined;
@@ -44,6 +45,13 @@ export class PortfolioComponent implements OnInit {
 
     this.unsplash.getCollectionPhotos('jFJrNU0ls2Y').subscribe((x) => {
       this.PortraitImages$ = of(x);
+    });
+    this.unsplash.getCollectionPhotos('sKCL-oqqSJo').subscribe((x) => {
+      this.UrbanImages$ = of(x);
+    });
+
+    this.unsplash.getCollectionPhotos('KWRoqHzCwx8').subscribe((x) => {
+      this.ProductImages$ = of(x);
     });
 
     this.myForm.valueChanges.subscribe((x) => console.log(x));

@@ -1,0 +1,25 @@
+:host{
+  scroll-snap-type: y mandatory;
+  overflow: auto;
+}
+.slide{
+  height: 100vh;
+  background-color: rgb(68, 68, 154);
+  scroll-snap-align: start;
+}
+
+.slide:nth-child(3){
+
+  background-color: rgb(68, 154, 78);
+
+
+}
+
+.slide:nth-child(1){
+
+  background-color: rgb(154, 68, 104);
+
+
+}
+
+

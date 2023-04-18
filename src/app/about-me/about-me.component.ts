@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-about-me',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-me.component.scss']
 })
 export class AboutMeComponent {
+  @HostListener("document:scroll")
+  scroll(){
+    console.log('hi');
+
+  }
 
 }

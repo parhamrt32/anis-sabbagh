@@ -17,6 +17,8 @@ export class ContactComponent {
 
 
 
+
+
   onSubmit() {
     const body = {
       name: this.name,
@@ -33,6 +35,9 @@ export class ContactComponent {
     message : ''
 
   }
+  shownResult : Boolean = false
+  ResultText : String = ''
+  resultSuccessful : boolean = false
 
 
 
@@ -41,13 +46,37 @@ export class ContactComponent {
     console.log(e.target);
     console.log(this.emailParam);
 
+    if( this.emailParam.email.length == 0 && this.emailParam.name.length == 0 && this.emailParam.message.length == 0  ){
+      this.resultSuccessful = false
+      this.ResultText  = 'The fields are Empty please put your information for contact and your message'
+      this.shownResult = true
+      setTimeout( () => {
 
+        this.shownResult = false
+      } , 4000 )
 
-    emailjs.send('service_czjf2jp', 'template_423x0pk',this.emailParam, '_th979TOxxwVi5po-')
+    }else{
+      emailjs.send('service_czjf2jp', 'template_423x0pk',this.emailParam, '_th979TOxxwVi5po-')
       .then((result: EmailJSResponseStatus) => {
         console.log(result.text);
+        this.shownResult = true
+        this.resultSuccessful = true
+          this.ResultText = 'Your Message Has Been Sent'
+        setTimeout( () => {
+
+          this.shownResult = false
+        } , 3000 )
+
       }, (error) => {
         console.log(error.text);
       });
+      this.emailParam.name = ''
+      this.emailParam.email = ''
+      this.emailParam.message = ''
+    }
+
+
+
+
   }
 }
