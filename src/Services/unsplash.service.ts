@@ -43,6 +43,7 @@ export class UnsplashService {
         const params = {
           client_id: this.accessKey,
           per_page: this.maxPerPage.toString(),
+          fm:'webp'
         };
 
         return range(1, pages).pipe(
@@ -83,7 +84,7 @@ export class UnsplashService {
             const pageParams = { ...params, page: page.toString() };
             return this.http.get<any[]>(url, { params: pageParams });
           })
-          
+
         );
       })
     );

@@ -18,6 +18,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
 import { LazyImgDirective } from './Directives/lazy-img-directive.directive';
 import { DonateComponent } from './donate/donate.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 
 @NgModule({
   declarations: [
@@ -42,6 +48,9 @@ import { DonateComponent } from './donate/donate.component';
     FormsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
+    ScrollingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent],

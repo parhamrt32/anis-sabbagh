@@ -5,7 +5,11 @@
 .slide{
   height: 100vh;
   background-color: rgb(68, 68, 154);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   scroll-snap-align: start;
+
 }
 
 .slide:nth-child(3){
