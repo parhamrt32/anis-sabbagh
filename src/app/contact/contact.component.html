@@ -1,33 +1,60 @@
 <app-nav-bar> </app-nav-bar>
 
+<div class="form mt-auto mb-auto">
+  <div class="form_image">
+    <img alt="image of Anis Sabbagh" src="../../assets/IMG_20230310_144543_330.avif" />
+  </div>
 
-<div class="form">
-<div class="form_image ">
-
- <img src="../../assets/IMG_20230310_144543_330.jpg">
+  <div class="form_overlay" style="font-family: 'Poppins', serif">
+    <p class="detail">
+      If you want to get in touch you can email me at
+      <a href="mailto:anissabbagh1381@gmail.com"> anissabbagh1381@gmail.com </a>
+      or fill out the contact form below
+    </p>
+    <form class="contact-form position-relative" (submit)="sendEmail($event)">
+      <label>Name</label>
+      <input
+      aria-label="Name"
+        style="
+          padding: 2px;
+          border-radius: 4px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        "
+        [(ngModel)]="emailParam.name"
+        type="text"
+        name="name"
+      />
+      <label>Email</label>
+      <input
+      aria-label="email"
+        style="padding: 2px; border-radius: 4px"
+        [(ngModel)]="emailParam.email"
+        type="email"
+        name="email"
+      />
+      <label>Message</label>
+      <textarea
+        aria-label="Message"
+        style="padding: 2px; border-radius: 4px"
+        rows="4"
+        cols="50"
+        [(ngModel)]="emailParam.message"
+        name="message"
+      ></textarea>
+      <input class="mt-2" style="width: 40%" type="submit" value="Send" />
+    </form>
+    <p
+      [ngClass]="resultSuccessful ? 'result_success' : 'result_error'"
+      *ngIf="shownResult"
+      class="resultText display-f align-items-center justify-space-evenly position-absolute br-xs"
+    >
+      <mat-icon class="overflow-visible">
+        {{ resultSuccessful ? "done" : "close" }}
+      </mat-icon>
+      {{ ResultText }}
+    </p>
+    <app-footer class="footer " [showParham]="false"></app-footer>
+  </div>
 </div>
 
 
-
-<div class="form_overlay" style="font-family: 'Poppins', serif ;" >
-  <p class="detail"> If you want to get in touch you can email me at <a href="mailto:anissabbagh1381@gmail.com">
-    anissabbagh1381@gmail.com </a> or fill out the contact form below </p>
-  <form class="contact-form position-relative" (submit)="sendEmail($event)">
-    <label>Name</label>
-    <input style="padding: 2px;border-radius: 4px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" [(ngModel)]="emailParam.name" type="text" name="name">
-    <label>Email</label>
-    <input style="padding: 2px;border-radius: 4px;"  [(ngModel)]="emailParam.email" type="email" name="email">
-    <label>Message</label>
-    <textarea style="padding: 2px;border-radius: 4px;" rows="4" cols="50" [(ngModel)]="emailParam.message" name="message"></textarea>
-    <input  class="mt-2" style="width: 40%;" type="submit" value="Send">
-  </form>
-  <p  [ngClass]="resultSuccessful ? 'result_success' : 'result_error'" *ngIf="shownResult"  class="resultText display-f align-items-center justify-space-evenly position-absolute  br-xs" > <mat-icon class="overflow-visible"> {{resultSuccessful ? 'done' : 'close'}} </mat-icon> {{ResultText}} </p>
-</div>
-
-</div>
-
-
-
-
-
-<app-footer class=" footer mt-auto"></app-footer>
