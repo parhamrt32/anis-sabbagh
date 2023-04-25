@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { delay, map, Observable, of } from 'rxjs';
+import {  Observable, of } from 'rxjs';
 import { fade } from 'src/animation/fade';
-import { MatDividerModule } from '@angular/material/divider';
-import { IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
+
 
 import { UnsplashService } from 'src/Services/unsplash.service';
 import { FormControl, FormGroup } from '@angular/forms';
