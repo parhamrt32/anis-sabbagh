@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   logIn(){
     const { email, password } = this.loginForm?.value;
     signInWithEmailAndPassword(this.auth , email , password).then( () => {
-      this.router.navigate(['Home'])
+      this.router.navigate(['dashboard'])
     }
     )
   }

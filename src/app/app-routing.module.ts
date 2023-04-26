@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'Portfolio', component: PortfolioComponent },
   { path: 'Contact', component: ContactComponent },
   { path: 'AboutMe', component: AboutMeComponent },
-  { path: 'login' , loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) },
+  { path: 'dashboard' , loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) },
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
 ];
 
