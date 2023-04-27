@@ -5,37 +5,50 @@
 
 <app-nav-bar></app-nav-bar>
 
-
-<div class="Category " style="font-family: 'Poppins' , serif; font-weight: 300;" >
-    <form class="display-f justify-center flex-wrap-wrap gap-3 mt-3" [formGroup]="myForm">
-        <label>
-            <input type="radio" formControlName="option" value="all">
-            All
-        </label>
-        <label>
-            <input type="radio" formControlName="option" value="architectural">
-            Architectural
-        </label>
-        <label>
-            <input type="radio" formControlName="option" value="portraits">
-            Portraits
-        </label>
-        <label>
-          <input type="radio" formControlName="option" value="urban">
-          Urban
-      </label>
-      <label>
-        <input type="radio" formControlName="option" value="product">
-        Product
+<div class="Category" style="font-family: 'Poppins', serif; font-weight: 300">
+  <form
+    class="display-f justify-center flex-wrap-wrap gap-3 mt-3"
+    [formGroup]="myForm"
+  >
+    <label>
+      <input type="radio" formControlName="option" value="portraits" />
+      Portraits
     </label>
     <label>
-      <input type="radio" formControlName="option" value="commercial">
+      <input type="radio" formControlName="option" value="architectural" />
+      Architectural
+    </label>
+
+    <label>
+      <input type="radio" formControlName="option" value="urban" />
+      Urban
+    </label>
+    <label>
+      <input type="radio" formControlName="option" value="product" />
+      Product
+    </label>
+    <label>
+      <input type="radio" formControlName="option" value="commercial" />
       Commercial
-  </label>
-    </form>
+    </label>
+  </form>
 </div>
 
 
+<div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container mt-2 mb-2 position-relative">
+  <app-loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></app-loading>
+  <div class="fade-in">
+    <img  (load)="onImageLoad()"  class="fade-in" *ngFor="let portrait of portraitsimages" [src]="portrait" >
+  </div>
+
+
+
+</div>
+
+<div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container  position-relative mt-2 mb-2 ">
+  <app-loading class="position-absolute top right bottom left"></app-loading>
+
+</div>
 
 <!-- <div *ngIf="shownLoading" style=" inset: 0; height: 50vh; "
     class="position-absolute display-f justify-center align-items-center loading-container mt-auto mb-auto  ">
@@ -45,55 +58,23 @@
 
 
 
-<div *ngIf="myForm.get('option')?.value === 'all'" class="images-container mt-2 mb-2">
-    <div *ngIf="images$ | async as photos" class="pics display-f flex-dir-column ">
-        <img @fade class="" *ngFor=" let image of photos; index as i ; last as l  " [ngSrc]="image.urls.regular"
-            (load)="loadFunc( l)" style="position: relative;" loading="eager" fill
-            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
-    </div>
-</div>
 
 <div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container mt-2 mb-2">
-    <div *ngIf="ArchitectureImages$ | async as photos;" class="pics display-f flex-dir-column ">
-        <img @fade class="" *ngFor=" let image of photos; index as i ; last as l " [ngSrc]="image.urls.regular"
-            (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
-            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
-    </div>
 
 </div>
 
 
-<div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container mt-2 mb-2">
-    <div *ngIf="PortraitImages$ | async as photos;" class="pics display-f flex-dir-column ">
-        <img @fade class=" " *ngFor=" let image of photos; index as i;last as l  " [ngSrc]="image.urls.regular"
-            (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
-            [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
-    </div>
-
-</div>
 
 <div *ngIf="myForm.get('option')?.value === 'urban'" class="images-container mt-2 mb-2">
-  <div *ngIf="UrbanImages$ | async as photos;" class="pics display-f flex-dir-column ">
-      <img @fade class=" " *ngFor=" let image of photos; index as i;last as l  " [ngSrc]="image.urls.regular"
-          (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
-          [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
-  </div>
 
 </div>
 <div *ngIf="myForm.get('option')?.value === 'product'" class="images-container mt-2 mb-2">
-  <div *ngIf="ProductImages$ | async as photos;" class="pics display-f flex-dir-column ">
-      <img @fade class=" " *ngFor=" let image of photos; index as i;last as l  " [ngSrc]="image.urls.regular"
-          (load)="loadFunc(l)" style="position: relative;" loading="eager" fill
-          [attr.fetchpriority]=" i === 0 ? 'high' : 'low' ">
 
-  </div>
 
 </div> -->
 
-
-
-<app-footer class=" footer mt-auto"></app-footer>
+<app-footer class="footer "></app-footer>

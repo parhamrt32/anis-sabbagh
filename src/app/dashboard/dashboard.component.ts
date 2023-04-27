@@ -7,6 +7,8 @@ import {
   uploadBytesResumable,
   listAll,
 } from '@angular/fire/storage';
+import{signOut , Auth} from '@angular/fire/auth'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +35,7 @@ export class DashboardComponent implements OnInit {
   addCategoryClicked: boolean = false;
   addBrandNameClicked : boolean = false;
 
-  constructor(private _snackBar: MatSnackBar, private storage: Storage) {}
+  constructor(private _snackBar: MatSnackBar, private storage: Storage , private auth:Auth ,  private router: Router) {}
   ngOnInit(): void {
     listAll(ref(this.storage)).then((x) =>
       x.prefixes.forEach((reference) => {
@@ -165,4 +167,17 @@ export class DashboardComponent implements OnInit {
     this.category = 'none';
     this.addCategoryClicked = false;
   }
+
+  logOut(){
+    signOut(this.auth).then( () => {
+      this.router.navigate(['dashboard/login'] );
+
+
+  })
+
+
+}
+goToWebSite(){
+  this.router.navigate([''] );
+}
 }

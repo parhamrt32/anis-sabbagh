@@ -1,0 +1,24 @@
+@import "./assets/styles/palette.scss";
+
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $platinum;
+}
+.loading {
+  font-size: 3rem;
+  background-image: linear-gradient(to right, $raisin-black 35%, #71797e 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 300%;
+  background-position: 0%;
+  animation: animatedText 1s infinite alternate;
+}
+
+@keyframes animatedText {
+  to {
+    background-position: 100% center;
+  }
+}

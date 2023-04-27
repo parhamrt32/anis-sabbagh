@@ -1,63 +1,73 @@
-import { Component, OnInit } from '@angular/core';
-import {  Observable, of } from 'rxjs';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { fade } from '../../../animation/fade';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ImagesService } from 'Services/images.service';
+import { Observable, from } from 'rxjs';
+import { LoadingComponent } from 'app/loading/loading.component';
 
 
 
-import { FormControl, FormGroup } from '@angular/forms';
-import { UnsplashService } from 'Services/unsplash.service';
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
-  animations: [fade],
+  animations: [fade ],
 })
-export class PortfolioComponent implements OnInit {
-  ArchitectureImages$: Observable<any[]> | undefined;
-  PortraitImages$: Observable<any[]> | undefined;
-  UrbanImages$: Observable<any[]> | undefined;
-  ProductImages$: Observable<any[]> | undefined;
+export class PortfolioComponent implements OnInit  {
+  @ViewChild('loading') loadingComponent: LoadingComponent | undefined;
 
 
 
-  images: any[] = [];
-  images$: Observable<any[]> | undefined;
-  showFooter: boolean = false;
-  showTemplate = true;
+
   myForm: FormGroup = new FormGroup({
-    option: new FormControl('all'),
+    option: new FormControl('portraits'),
   });
-  shownLoading: boolean = true;
+  loadedImages = 0;
+  imageLoaded = true
 
-  constructor(private unsplash: UnsplashService) {}
+   portrait$ : Observable<string[]> | null | undefined;
+    portraitsimages : string[] = []
+
+
+
+  constructor( private imageService :ImagesService , private renderer: Renderer2 ){
+
+  }
   ngOnInit(): void {
-    this.unsplash.getUserPhotos().subscribe((x: any[]) => {
-      x.forEach((item: any) => this.images.push(...item));
-      console.log(this.images);
+     this.portrait$ = this.imageService.getImage('portrait')
 
-      this.images$ = of(this.images);
-    });
+     this.imageService.getImage('portrait').subscribe( item =>
+      this.portraitsimages = item
+      )
 
-    this.unsplash.getCollectionPhotos('3vNAS9yaC3I').subscribe((x: any) => {
-      this.ArchitectureImages$ = of(x);
-    });
 
-    this.unsplash.getCollectionPhotos('jFJrNU0ls2Y').subscribe((x: any) => {
-      this.PortraitImages$ = of(x);
-    });
-    this.unsplash.getCollectionPhotos('sKCL-oqqSJo').subscribe((x: any) => {
-      this.UrbanImages$ = of(x);
-    });
 
-    this.unsplash.getCollectionPhotos('KWRoqHzCwx8').subscribe((x: any) => {
-      this.ProductImages$ = of(x);
-    });
 
-    this.myForm.valueChanges.subscribe((x) => console.log(x));
+
   }
 
-  loadFunc(last: boolean) {
-    last && (this.shownLoading = false);
+
+  onImageLoad(): void {
+
+    this.loadedImages++;
+    if (this.loadedImages === this.portraitsimages.length) {
+      this.imageLoaded = false
+
+      setTimeout(() => {
+        console.log('All images have finished loading!');
+        this.imageLoaded = false
+        this.loadedImages++;
+
+
+
+      } , 2000 )
+
+    }
   }
+
+
+
+
+
 }

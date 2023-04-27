@@ -21,6 +21,8 @@ import { DonateComponent } from './client/donate/donate.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     ContactComponent,
     LazyImgDirective,
     DonateComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     FormsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
+    provideStorage(() => getStorage()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],

@@ -8,10 +8,10 @@ import {
 
 export let fade = trigger('fade', [
   transition(':enter', [
-    style({ opacity: 0, transform: 'translateY(-50px)' }),
+    style({ opacity: 0 }),
     animate(300),
   ]),
   transition(':leave', [
-    animate(100, style({ transform: 'translateX(100%)' })),
+    animate('400ms ease-out', style({ opacity: 0 })),
   ]),
 ]);
