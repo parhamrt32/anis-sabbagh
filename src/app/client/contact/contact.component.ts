@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { fade } from 'src/animation/fade';
+import { fade } from '../../../animation/fade';
 
 @Component({
   selector: 'app-contact',

@@ -1,14 +1,16 @@
 <mat-tab-group class="">
   <mat-tab label="Image">
+
+    <!-- CATEGORY -->
     <h2>Select Category</h2>
     <hr />
 
     <div class="display-f align-items-center gap-2">
       <mat-form-field>
         <mat-label>Select an Category</mat-label>
-        <mat-select [(value)]="category">
+        <mat-select [(value)]="category" [formControl]="CategoryselectControl" >
           <mat-option *ngFor="let item of categories" [value]="item">
-            {{ item }}
+            {{ item | titlecase  }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -39,16 +41,71 @@
         </button>
       </form>
     </div>
-    <p style="color: black">
-      Selected Category <strong> {{ category }} </strong>
+    <p *ngIf="CategoryselectControl.value" style="color: black">
+      Selected Category <strong> {{ CategoryselectControl.value | titlecase }} </strong>
     </p>
+
+
+    <!-- commercial  -->
+    <div *ngIf="CategoryselectControl.value === 'commercial'" >
+      <hr>
+      <h2 class="mt-4">Select commercial location / brand </h2>
+      <div class="display-f align-items-center gap-2">
+        <mat-form-field>
+          <mat-label>Select an Brand</mat-label>
+          <mat-select [(value)]="brand" [formControl]="BrandselectControl" >
+            <mat-option *ngFor="let brand of brands" [value]="brand">
+              {{ brand | titlecase  }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          *ngIf="!addBrandNameClicked"
+          mat-button
+          color="primary"
+          (click)="addBrandName()"
+        >
+          Add Brand Name
+        </button>
+
+        <form *ngIf="addBrandNameClicked">
+          <mat-form-field>
+            <mat-label>Brand Name</mat-label>
+            <input matInput [formControl]="brandName" placeholder="basil-cafe" />
+          </mat-form-field>
+          <button color="primary" mat-button (click)="addbrandNameTobands()">
+            Add
+          </button>
+          <button
+            color="warn"
+            mat-button
+            (click)="cancleAddingCategoryToCategories()"
+          >
+            Cancle
+          </button>
+        </form>
+      </div>
+      <p *ngIf="BrandselectControl.value" style="color: black">
+        Selected brand <strong> {{ BrandselectControl.value | titlecase }} </strong>
+      </p>
+    <hr />
+
+    </div>
 
     <h2 class="mt-4">Select File(s)</h2>
     <hr />
 
-    <form class="display-f flex-dir-column">
+    <form class="display-f flex-dir-column ">
 
-      <input type="file" multiple  (change)="onFileSelected($event)" />
+      <input [formControl]="fileControl" type="file" multiple  (change)="onFileSelected($event)" required />
+      <div class="display-f justify-flex-end gap-2">
+        <button (click)="cancle()"  mat-raised-button color="warn" > Cancle </button>
+        <button (click)="onUpload()" mat-raised-button color="primary" [disabled]="fileControl.invalid && CategoryselectControl.invalid" > Upload </button>
+
+
+      </div>
+
     </form>
   </mat-tab>
   <mat-tab label="Blog"> Content 2 </mat-tab>
