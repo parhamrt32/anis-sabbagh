@@ -4,6 +4,7 @@
 </div>
 <mat-tab-group class="">
   <mat-tab label="Image">
+    <mat-progress-bar *ngIf="isUploading" mode="query"></mat-progress-bar>
 
     <!-- CATEGORY -->
     <h2>Select Category</h2>

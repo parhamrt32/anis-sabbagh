@@ -7,7 +7,7 @@ import {
   uploadBytesResumable,
   listAll,
 } from '@angular/fire/storage';
-import{signOut , Auth} from '@angular/fire/auth'
+import { signOut, Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,42 +26,49 @@ export class DashboardComponent implements OnInit {
   BrandselectControl = new FormControl(null, Validators.required);
   category = 'none';
   categories: string[] = [];
-  brands : string[] = [];
-  brand : string = 'none'
+  brands: string[] = [];
+  brand: string = 'none';
   brandName = new FormControl('', [
     Validators.required,
     Validators.minLength(5),
   ]);
   addCategoryClicked: boolean = false;
-  addBrandNameClicked : boolean = false;
+  addBrandNameClicked: boolean = false;
+  isUploading = false;
 
-  constructor(private _snackBar: MatSnackBar, private storage: Storage , private auth:Auth ,  private router: Router) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    private storage: Storage,
+    private auth: Auth,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     listAll(ref(this.storage)).then((x) =>
       x.prefixes.forEach((reference) => {
         this.categories.push(reference.fullPath);
       })
     );
-    listAll(ref(this.storage , 'commercial' )).then( (x) => {
+    listAll(ref(this.storage, 'commercial')).then((x) => {
       console.log(x);
 
       x.prefixes.forEach((reference) => {
-
         this.brands.push(reference.name);
-      })
-    } )
+      });
+    });
   }
 
   addCategory() {
     this.addCategoryClicked = true;
   }
-  addBrandName(){
-    this.addBrandNameClicked = true
+  addBrandName() {
+    this.addBrandNameClicked = true;
   }
 
   addCategoryToCategories() {
     if (this.categoryName.value) {
-      if (!this.categories.includes(this.categoryName.value.replace(/\s+/g, '-'))) {
+      if (
+        !this.categories.includes(this.categoryName.value.replace(/\s+/g, '-'))
+      ) {
         this.categories.push(this.categoryName.value.replace(/\s+/g, '-'));
       } else {
         this._snackBar.open(
@@ -87,7 +94,7 @@ export class DashboardComponent implements OnInit {
     if (this.brandName.value) {
       if (!this.brands.includes(this.brandName.value.replace(/\s+/g, '-'))) {
         this.brands.push(this.brandName.value.replace(/\s+/g, '-'));
-        this.brandName.setValue('')
+        this.brandName.setValue('');
       } else {
         this._snackBar.open(
           'The brand name that you added is already existing',
@@ -110,41 +117,39 @@ export class DashboardComponent implements OnInit {
 
   onUpload() {
     if (this.selectedFiles && this.CategoryselectControl.valid) {
+
       for (let index = 0; index < this.selectedFiles.length; index++) {
         const file = this.selectedFiles.item(index);
         if (file) {
-          if(this.BrandselectControl.value){
+          this.isUploading = true;
+          if (this.BrandselectControl.value) {
             const fileRef = ref(
               this.storage,
               `${this.CategoryselectControl.value}/${this.BrandselectControl.value}/${file?.name}`
             );
             uploadBytesResumable(fileRef, file)
               .then(() => {
-                console.log('Uploaded')
-                this.cancle()
-
-              }  )
+                console.log('Uploaded');
+                this.cancle();
+              })
               .catch((err) => console.log(err));
-
-          }else{
+          } else {
             const fileRef = ref(
               this.storage,
               `${this.CategoryselectControl.value}/${file?.name}`
             );
             uploadBytesResumable(fileRef, file)
               .then(() => {
-                console.log('Uploaded')
-                this.cancle()
-
-              }  )
-              .catch((err) => console.log(err));
-
+                console.log('Uploaded');
+                this.cancle();
+              })
+              .catch((err) => console.log(err)).finally( () => {
+                this.isUploading = false;
+              } )
 
           }
-
         }
       }
-
 
     } else {
       this._snackBar.open(
@@ -168,16 +173,12 @@ export class DashboardComponent implements OnInit {
     this.addCategoryClicked = false;
   }
 
-  logOut(){
-    signOut(this.auth).then( () => {
-      this.router.navigate(['dashboard/login'] );
-
-
-  })
-
-
-}
-goToWebSite(){
-  this.router.navigate([''] );
-}
+  logOut() {
+    signOut(this.auth).then(() => {
+      this.router.navigate(['dashboard/login']);
+    });
+  }
+  goToWebSite() {
+    this.router.navigate(['']);
+  }
 }

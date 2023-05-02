@@ -1,7 +1,7 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DonateComponent } from '../client/donate/donate.component';
+import { DonateComponent } from '../../libs/donate/donate.component';
 
 @Component({
   selector: 'app-home',

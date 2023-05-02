@@ -1,56 +1,36 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { PortfolioComponent } from './client/portfolio/portfolio.component';
-import { NavBarComponent } from './client/nav-bar/nav-bar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './client/home/home.component';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './client/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MatDividerModule } from '@angular/material/divider';
-import {MatDialogModule} from '@angular/material/dialog';
 import { AboutMeComponent } from './client/about-me/about-me.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgOptimizedImage } from '@angular/common';
-import { LazyImgDirective } from './Directives/lazy-img-directive.directive';
-import { DonateComponent } from './client/donate/donate.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { LoadingComponent } from './loading/loading.component';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { LibsModule } from './libs/libs.module';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PortfolioComponent,
-    NavBarComponent,
-    FooterComponent,
     AboutMeComponent,
     ContactComponent,
-    LazyImgDirective,
-    DonateComponent,
-    LoadingComponent,
+
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    LibsModule,
+    RouterModule,
     MatIconModule,
-    MatDialogModule,
-    MatDividerModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgOptimizedImage,
-    provideStorage(() => getStorage()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+
   ],
   providers: [],
   bootstrap: [AppComponent],

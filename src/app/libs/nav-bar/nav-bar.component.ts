@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { fade } from '../../../animation/fade';
+import { fade } from '../animation/fade';
 
 @Component({
   selector: 'app-nav-bar',

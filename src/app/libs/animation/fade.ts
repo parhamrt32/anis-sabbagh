@@ -9,9 +9,9 @@ import {
 export let fade = trigger('fade', [
   transition(':enter', [
     style({ opacity: 0 }),
-    animate(300),
+    animate(200),
   ]),
   transition(':leave', [
-    animate('400ms ease-out', style({ opacity: 0 })),
+    animate('200ms ease-out', style({ opacity: 0 })),
   ]),
 ]);

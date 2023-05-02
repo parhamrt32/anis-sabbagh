@@ -12,6 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {  redirectLoggedInTo, redirectUnauthorizedTo , AuthGuard } from '@angular/fire/auth-guard';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const redirectLoggedInToSendEmail = () => redirectLoggedInTo(['dashboard']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['dashboard/login'])
@@ -42,6 +43,7 @@ const routes : Routes =[
 
   ],
   imports: [
+    MatProgressBarModule,
     MatTabsModule,
     MatSnackBarModule,
     MatSelectModule,
