@@ -18,53 +18,57 @@
 input {
   display: none;
 }
-label{
-  cursor: pointer;;
+label {
+  cursor: pointer;
 }
 
 .images-container {
-
   flex-grow: 1;
 
-    img{
-      width: 100%;
+  .pics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    }
-
+  img {
+    width: 100%;
+  }
 }
-
-
 
 .footer {
   background-color: $raisin-black;
 }
 
-
 .text-blur-out {
-	-webkit-animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) .2s both;
-	        animation: text-blur-out 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) .2s both;
+  -webkit-animation: text-blur-out 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+    0.2s both;
+  animation: text-blur-out 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.2s both;
 }
 
-.fade-in{-webkit-animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) .2s both;animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) .2s both}
+.fade-in {
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
+}
 
- @-webkit-keyframes text-blur-out {
+@-webkit-keyframes text-blur-out {
   0% {
     -webkit-filter: blur(0.01);
-            filter: blur(0.01);
+    filter: blur(0.01);
   }
   100% {
     -webkit-filter: blur(12px) opacity(0%);
-            filter: blur(12px) opacity(0%);
+    filter: blur(12px) opacity(0%);
   }
 }
 @keyframes text-blur-out {
   0% {
     -webkit-filter: blur(0.01);
-            filter: blur(0.01);
+    filter: blur(0.01);
   }
   100% {
     -webkit-filter: blur(12px) opacity(0%);
-            filter: blur(12px) opacity(0%);
+    filter: blur(12px) opacity(0%);
   }
 }
 
@@ -75,30 +79,58 @@ label{
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
 
- @-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
-
-
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 @media screen and (min-width: 760px) {
   .images-container {
-    column-count: 3;
-    column-width: 33%;
-    padding: 0 12px;
+    .pics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      grid-auto-flow: dense;
+      max-width: 1100px;
+      margin: auto;
+    }
   }
 
-  .images-container .pics {
-    transition: all 50 ease;
-    cursor: pointer;
+  .row-span-2 {
+    grid-row-end: span 2;
+  }
+
+  .row-span-2 {
+    grid-row-end: span 3;
   }
 
   img {
     transition: all 50ms ease-in-out;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   img:hover {
-    transition: 200ms;
+    transition: 100ms;
     scale: 1.1;
-    z-index: 3;
+    position: relative;
+    z-index: 2;
   }
+}
+
+@media screen and (min-width: 1024px) {
+
 }

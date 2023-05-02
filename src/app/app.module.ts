@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './client/portfolio/portfolio.component';
-import { NavBarComponent } from './client/nav-bar/nav-bar.component';
+import { NavBarComponent } from './libs/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './client/footer/footer.component';
+import { FooterComponent } from './libs/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -22,22 +22,22 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from './libs/loading/loading.component';
+import { PortfolioModule } from './client/portfolio/portfolio.module';
+import { LibsModule } from './libs/libs.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PortfolioComponent,
-    NavBarComponent,
-    FooterComponent,
     AboutMeComponent,
     ContactComponent,
     LazyImgDirective,
     DonateComponent,
-    LoadingComponent,
+
   ],
   imports: [
+    LibsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -48,6 +48,7 @@ import { LoadingComponent } from './loading/loading.component';
     FormsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
+    PortfolioModule,
     provideStorage(() => getStorage()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

@@ -1,9 +1,8 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { fade } from '../../../animation/fade';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ImagesService } from 'Services/images.service';
-import { Observable, from } from 'rxjs';
-import { LoadingComponent } from 'app/loading/loading.component';
+import { ImagesService } from '../../../Services/images.service';
+import { LoadingComponent } from '../../libs/loading/loading.component';
 
 
 
@@ -26,8 +25,10 @@ export class PortfolioComponent implements OnInit  {
   loadedImages = 0;
   imageLoaded = true
 
-   portrait$ : Observable<string[]> | null | undefined;
+
     portraitsimages : string[] = []
+    architecturalImages : string[] = []
+    urbanImages : string[] = []
 
 
 
@@ -35,11 +36,23 @@ export class PortfolioComponent implements OnInit  {
 
   }
   ngOnInit(): void {
-     this.portrait$ = this.imageService.getImage('portrait')
 
-     this.imageService.getImage('portrait').subscribe( item =>
+    this.myForm.controls['option'].valueChanges.subscribe( () => {
+      this.imageLoaded = true
+    } )
+
+
+     this.imageService.getImage('portrait').subscribe( (item: string[]) =>
       this.portraitsimages = item
       )
+
+      this.imageService.getImage('architectural').subscribe((item: string[]) =>
+        this.architecturalImages = item
+        )
+
+        this.imageService.getImage('urban').subscribe((item: string[]) =>
+          this.urbanImages = item
+          )
 
 
 
@@ -48,20 +61,20 @@ export class PortfolioComponent implements OnInit  {
   }
 
 
-  onImageLoad(): void {
+  onImageLoad(array : string[]): void {
 
     this.loadedImages++;
-    if (this.loadedImages === this.portraitsimages.length) {
-      this.imageLoaded = false
+    if (this.loadedImages === array.length) {
+
 
       setTimeout(() => {
         console.log('All images have finished loading!');
         this.imageLoaded = false
-        this.loadedImages++;
+        this.loadedImages = 0;
 
 
 
-      } , 2000 )
+      } , 500 )
 
     }
   }

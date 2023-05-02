@@ -35,10 +35,10 @@
 </div>
 
 
-<div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container mt-2 mb-2 position-relative">
-  <app-loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></app-loading>
-  <div class="fade-in">
-    <img  (load)="onImageLoad()"  class="fade-in" *ngFor="let portrait of portraitsimages" [src]="portrait" >
+<div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container m-2 position-relative">
+  <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading>
+  <div class="fade-in pics">
+    <img  (load)="onImageLoad(portraitsimages)"  class="fade-in" *ngFor="let portrait of portraitsimages; let i = index" [src]="portrait" [ngClass]=" {'row-span-2' : i % 4 === 0 , 'row-span-3' : i % 7 === 0 && i !== 0 } " >
   </div>
 
 
@@ -46,7 +46,18 @@
 </div>
 
 <div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container  position-relative mt-2 mb-2 ">
-  <app-loading class="position-absolute top right bottom left"></app-loading>
+  <!-- <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading> -->
+  <div class="fade-in">
+    <img  (load)="onImageLoad(architecturalImages)"  class="fade-in" *ngFor="let architect of architecturalImages" [src]="architect" >
+  </div>
+
+</div>
+
+<div *ngIf="myForm.get('option')?.value === 'urban'" class="images-container  position-relative mt-2 mb-2 ">
+  <!-- <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading> -->
+  <div class="fade-in ">
+    <img  (load)="onImageLoad(urbanImages)"  class="fade-in" *ngFor="let urban of urbanImages" [src]="urban" >
+  </div>
 
 </div>
 
