@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, provideImageKitLoader } from '@angular/common';
 import { PortfolioComponent } from './portfolio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LibsModule } from 'app/libs/libs.module';
 import {  RouterModule, Routes } from '@angular/router';
-
+import { NgOptimizedImage } from '@angular/common'
 
 const routes : Routes = [
   {
@@ -17,6 +17,7 @@ const routes : Routes = [
 @NgModule({
   declarations: [PortfolioComponent],
   imports: [
+    NgOptimizedImage,
     LibsModule,
     CommonModule,
     FormsModule,
@@ -25,6 +26,9 @@ const routes : Routes = [
   ],
   exports: [
     PortfolioComponent
+  ],
+  providers : [
+    provideImageKitLoader("https://ik.imagekit.io/9nftpp6fp/o/")
   ]
 })
 export class PortfolioModule { }

@@ -36,9 +36,9 @@
 
 
 <div *ngIf="myForm.get('option')?.value === 'portraits'" class="images-container m-2 position-relative">
-  <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading>
-  <div class="fade-in pics">
-    <img  (load)="onImageLoad(portraitsimages)"  class="fade-in" *ngFor="let portrait of portraitsimages; let i = index" [src]="portrait" [ngClass]=" {'row-span-2' : i % 4 === 0 , 'row-span-3' : i % 7 === 0 && i !== 0 } " >
+  <!-- <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading> -->
+  <div class="pics position-relative">
+    <img @fade [ngSrcset]="rawSrcset" style="height: auto;" [width]="portrait.width" [height]="portrait.height"  class="fade-in" *ngFor="let portrait of portraitsimages; let i = index" [ngSrc]="portrait.url"  [priority]="i <= 2" >
   </div>
 
 

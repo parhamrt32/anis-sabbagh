@@ -3,7 +3,7 @@ import { fade } from '../../../animation/fade';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ImagesService } from '../../../Services/images.service';
 import { LoadingComponent } from '../../libs/loading/loading.component';
-
+import { NgOptimizedImage } from '@angular/common'
 
 
 
@@ -26,9 +26,11 @@ export class PortfolioComponent implements OnInit  {
   imageLoaded = true
 
 
-    portraitsimages : string[] = []
+    portraitsimages : {url: string , width : number , height : number}[] = []
     architecturalImages : string[] = []
     urbanImages : string[] = []
+
+    rawSrcset = '50w, 70w ,100w, 150w, 200w, 350w, 400w, 640w , 750w , 828w , 1080w , 1200w , 1920w , 2048w , 3840w'
 
 
 
@@ -42,8 +44,46 @@ export class PortfolioComponent implements OnInit  {
     } )
 
 
-     this.imageService.getImage('portrait').subscribe( (item: string[]) =>
-      this.portraitsimages = item
+     this.imageService.getImage('portrait').subscribe( (item: any) =>{
+
+     console.log(item);
+
+     item.map( (url: any) => {
+
+     const path = url.replace('https://ik.imagekit.io/9nftpp6fp/o/' , '');
+     const img = new Image()
+     img.src = url
+     img.onload = () => {
+
+      this.portraitsimages.push({
+        url : path,
+        width : img.width,
+        height : img.height
+       })
+
+     }
+
+
+     }
+      )
+
+
+
+
+
+
+      // item.map( pic => {
+
+      //   const image = new Image()
+      //   image.src = pic
+      //   image.onload = () => {
+      //     console.log( image.width , image.height );
+
+      //   }
+      // } )
+
+     }
+
       )
 
       this.imageService.getImage('architectural').subscribe((item: string[]) =>
@@ -53,6 +93,8 @@ export class PortfolioComponent implements OnInit  {
         this.imageService.getImage('urban').subscribe((item: string[]) =>
           this.urbanImages = item
           )
+
+
 
 
 
