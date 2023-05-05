@@ -16,7 +16,6 @@ import { AboutMeComponent } from './client/about-me/about-me.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
-import { LazyImgDirective } from './Directives/lazy-img-directive.directive';
 import { DonateComponent } from './client/donate/donate.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -32,7 +31,6 @@ import { LibsModule } from './libs/libs.module';
     HomeComponent,
     AboutMeComponent,
     ContactComponent,
-    LazyImgDirective,
     DonateComponent,
 
   ],

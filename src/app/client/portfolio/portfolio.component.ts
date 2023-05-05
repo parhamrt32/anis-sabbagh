@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { fade } from '../../../animation/fade';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ImagesService } from '../../../Services/images.service';
@@ -32,7 +32,7 @@ export class PortfolioComponent implements OnInit  {
 
 
 
-  constructor( private imageService :ImagesService , private renderer: Renderer2 ){
+  constructor( private imageService :ImagesService  ){
 
   }
   ngOnInit(): void {
