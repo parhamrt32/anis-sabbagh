@@ -30,7 +30,7 @@ export class PortfolioComponent implements OnInit  {
     architecturalImages : string[] = []
     urbanImages : string[] = []
 
-    rawSrcset = '50w, 70w ,100w, 150w, 200w, 350w, 400w, 640w , 750w , 828w , 1080w , 1200w , 1920w , 2048w , 3840w'
+    rawSrcset = '  1024w , 2048w'
 
 
 
