@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { FooterComponent } from './footer/footer.component';
+import { LazyLoadDirective } from './Directives/lazy-img-directive.directive';
 
 
 
 @NgModule({
-  declarations: [NavBarComponent, LoadingComponent, FooterComponent,],
+  declarations: [NavBarComponent, LoadingComponent, FooterComponent,LazyLoadDirective],
   imports: [
     MatIconModule,
     RouterModule ,
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
   exports: [
     NavBarComponent,
     LoadingComponent,
-    FooterComponent
+    FooterComponent,
+    LazyLoadDirective
   ]
 })
 export class LibsModule { }
