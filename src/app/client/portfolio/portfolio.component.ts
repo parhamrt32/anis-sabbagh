@@ -44,55 +44,11 @@ export class PortfolioComponent implements OnInit  {
     } )
 
 
-     this.imageService.getImage('portrait').subscribe( (item: any) =>{
-
-     console.log(item);
-
-     item.map( (url: any) => {
-
-     const path = url.replace('https://ik.imagekit.io/9nftpp6fp/o/' , '');
-     const img = new Image()
-     img.src = url
-     img.onload = () => {
-
-      this.portraitsimages.push({
-        url : path,
-        width : img.width,
-        height : img.height
-       })
-
-     }
-
-
-     }
-      )
 
 
 
 
 
-
-      // item.map( pic => {
-
-      //   const image = new Image()
-      //   image.src = pic
-      //   image.onload = () => {
-      //     console.log( image.width , image.height );
-
-      //   }
-      // } )
-
-     }
-
-      )
-
-      this.imageService.getImage('architectural').subscribe((item: string[]) =>
-        this.architecturalImages = item
-        )
-
-        this.imageService.getImage('urban').subscribe((item: string[]) =>
-          this.urbanImages = item
-          )
 
 
 
