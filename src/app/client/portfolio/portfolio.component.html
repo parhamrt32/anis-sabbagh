@@ -39,7 +39,7 @@
   <!-- <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading> -->
   <div class="pics position-relative">
     <!-- <img @fade [ngSrcset]="rawSrcset" sizes="50vw" style="height: auto;" [width]="portrait.width" [height]="portrait.height"   *ngFor="let portrait of portraitsimages; let i = index" [ngSrc]="portrait.url"  [priority]="i <= 2" > -->
-    <img src="../../../assets/images/portrait/anis-sabbagh-5S-t1aUGfeo-unsplash.jpg" >
+    <img @fade *ngFor="let portrait of portraitPaths; let i = index"  [src]="portrait"  [loading]="i > 5 ? 'lazy' : null" >
   </div>
 
 
@@ -47,7 +47,7 @@
 </div>
 
 <div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container m-2 position-relative ">
-  <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading>
+  <!-- <loading #loading @fade *ngIf="imageLoaded" class="position-absolute top right bottom left z-index-1 "></loading> -->
   <div class="fade-in pics">
     <img  (load)="onImageLoad(architecturalImages)"  class="fade-in" *ngFor="let architect of architecturalImages" [src]="architect" >
   </div>
@@ -62,31 +62,5 @@
 
 </div>
 
-<!-- <div *ngIf="shownLoading" style=" inset: 0; height: 50vh; "
-    class="position-absolute display-f justify-center align-items-center loading-container mt-auto mb-auto  ">
-    <span class='loading'> Loading </span>
-</div>
-
-
-
-
-
-
-<div *ngIf="myForm.get('option')?.value === 'architectural'" class="images-container mt-2 mb-2">
-
-
-</div>
-
-
-
-
-<div *ngIf="myForm.get('option')?.value === 'urban'" class="images-container mt-2 mb-2">
-
-
-</div>
-<div *ngIf="myForm.get('option')?.value === 'product'" class="images-container mt-2 mb-2">
-
-
-</div> -->
 
 <app-footer class="footer "></app-footer>

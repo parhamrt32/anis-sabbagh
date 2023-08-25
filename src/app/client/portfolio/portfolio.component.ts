@@ -16,6 +16,9 @@ import { NgOptimizedImage } from '@angular/common'
 export class PortfolioComponent implements OnInit  {
   @ViewChild('loading') loadingComponent: LoadingComponent | undefined;
 
+  portraitPaths : string[] | undefined
+
+
 
 
 
@@ -30,7 +33,7 @@ export class PortfolioComponent implements OnInit  {
     architecturalImages : string[] = []
     urbanImages : string[] = []
 
-    rawSrcset = '  1024w , 2048w'
+
 
 
 
@@ -38,6 +41,13 @@ export class PortfolioComponent implements OnInit  {
 
   }
   ngOnInit(): void {
+
+    this.portraitPaths = this.imageService.getPortraitsImagePaths()
+    console.log(this.portraitPaths);
+
+
+
+
 
     this.myForm.controls['option'].valueChanges.subscribe( () => {
       this.imageLoaded = true
